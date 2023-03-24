@@ -69,7 +69,7 @@ const List=mongoose.model("List",listSchema);
 
 const taarik=date.getDate();
 
-// app.get('/favicon.ico', (req, res) => res.status(204).end());
+app.get('/favicon.ico', (req, res) => res.status(204).end());
 
 app.get("/", function(req, res){
   Item.find({},function(err,foundItems){
