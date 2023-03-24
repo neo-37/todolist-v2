@@ -7,9 +7,22 @@ const _ = require("lodash");
 
 const app = express();
 
-app.set("view engine", "ejs");
 app.use(express.urlencoded({extended:true}));
-app.use(express.static("public"));
+// app.set("view engine", "ejs");
+// app.use(express.static("public"));
+
+//setup for vercel or maybe hosting platforms in general
+// Require static assets from public folder
+app.use(express.static(path.join(__dirname, "public")));
+
+// Set 'views' directory for any views 
+// being rendered res.render()
+app.set('views', path.join(__dirname, 'views'));
+
+// Set view engine as EJS
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
+
 
 mongoose.connect(process.env.MONGODB_URI,
 {useNewUrlParser: true, useUnifiedTopology: true,useFindAndModify: false});
