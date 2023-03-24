@@ -9,21 +9,12 @@ const app = express();
 
 app.use(express.urlencoded({extended:true}));
 app.set("view engine", "ejs");
-//app.use(express.static("public"));
+app.use(express.static("public"));
 
 
-// //setup for vercel or maybe hosting platforms in general
-// // Require static assets from public folder
-var path = require ('path');
- app.use(express.static(path.join(__dirname, "public")));
-// // Set 'views' directory for any views 
-// // being rendered res.render()
-// app.set('views', path.join(__dirname, 'views'));
-// // Set view engine as EJS
-// // app.engine('html', require('ejs').renderFile);
-// // app.set('view engine', 'html');
-
-
+// setup for hosting platforms in general
+// var path = require ('path');
+//  app.use(express.static(path.join(__dirname, "public")));
 
 
 mongoose.connect(process.env.MONGODB_URI,
