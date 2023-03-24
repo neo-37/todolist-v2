@@ -12,6 +12,7 @@ app.use(express.urlencoded({extended:true}));
 // app.use(express.static("public"));
 
 //setup for vercel or maybe hosting platforms in general
+var path = require ('path');
 // Require static assets from public folder
 app.use(express.static(path.join(__dirname, "public")));
 
